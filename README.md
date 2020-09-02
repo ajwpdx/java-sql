@@ -197,17 +197,13 @@ Below are some empty tables to be used to normalize the database
 * Not all of the cells will contain data in the final solution
 * Feel free to edit these tables as necessary
 
-Table Name:
+Table Name: Person Table
 
-|            |            |            |            |            |            |            |            |            |
-|------------|------------|------------|------------|------------|------------|------------|------------|------------|
-|            |            |            |            |            |            |            |            |            |
-|            |            |            |            |            |            |            |            |            |
-|            |            |            |            |            |            |            |            |            |
-|            |            |            |            |            |            |            |            |            |
-|            |            |            |            |            |            |            |            |            |
-|            |            |            |            |            |            |            |            |            |
-|            |            |            |            |            |            |            |            |            |
+| person_id  | name       | fenced_yard | city_dweller |
+|------------|------------|-------------|--------------|
+| 1          | Jane       | no          | yes          |
+| 2          | Bob        | no          | no           |
+| 3          | Sam        | yes         | no           |
 
 Table Name:
 
