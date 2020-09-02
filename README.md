@@ -104,7 +104,7 @@ SELECT * FROM customers
 WHERE UPPER(contact_title) LIKE '%MARKET%'
 ```
 
-* [ ] ***add a customer record for***
+* [x] ***add a customer record for***
 * customer id is 'SHIRE'
 * company name is 'The Shire'
 * contact name is 'Bilbo Baggins'
@@ -118,10 +118,11 @@ WHERE UPPER(contact_title) LIKE '%MARKET%'
   </details>
 
 ```SQL
-
+INSERT INTO customers(customer_id, company_name, contact_name, address, city, postal_code, country)
+VALUES ('SHIRE', 'The Shire', 'Bilbo Baggins', '1 Hobbit-Hole', 'Bag End', '111', 'Middle Earth')
 ```
 
-* [ ] ***update _Bilbo Baggins_ record so that the postal code changes to _"11122"_***
+* [x] ***update _Bilbo Baggins_ record so that the postal code changes to _"11122"_***
 
   <details><summary>hint</summary>
 
@@ -129,10 +130,12 @@ WHERE UPPER(contact_title) LIKE '%MARKET%'
   </details>
 
 ```SQL
-
+UPDATE customers
+SET postal_code = '11122'
+WHERE customer_id = 'SHIRE';
 ```
 
-* [ ] ***list orders grouped and ordered by customer company name showing the number of orders per customer company name. _Rattlesnake Canyon Grocery_ should have 18 orders***
+* [x] ***list orders grouped and ordered by customer company name showing the number of orders per customer company name. _Rattlesnake Canyon Grocery_ should have 18 orders***
 
   <details><summary>hint</summary>
 
@@ -141,10 +144,13 @@ WHERE UPPER(contact_title) LIKE '%MARKET%'
   </details>
 
 ```SQL
-
+SELECT c.company_name, COUNT(*)
+FROM orders o JOIN customers c
+ON o.customer_id=c.customer_id
+GROUP BY company_name;
 ```
 
-* [ ] ***list customers by contact name and the number of orders per contact name. Sort the list by the number of orders in descending order. _Jose Pavarotti_ should be at the top with 31 orders followed by _Roland Mendal_ with 30 orders. Last should be _Francisco Chang_ with 1 order***
+* [X] ***list customers by contact name and the number of orders per contact name. Sort the list by the number of orders in descending order. _Jose Pavarotti_ should be at the top with 31 orders followed by _Roland Mendal_ with 30 orders. Last should be _Francisco Chang_ with 1 order***
 
   <details><summary>hint</summary>
 
@@ -152,10 +158,14 @@ WHERE UPPER(contact_title) LIKE '%MARKET%'
   </details>
 
 ```SQL
-
+SELECT c.contact_name, COUNT(*)
+FROM orders o JOIN customers c
+ON o.customer_id=c.customer_id
+GROUP BY contact_name
+ORDER BY 2 DESC;
 ```
 
-* [ ] ***list orders grouped by customer's city showing the number of orders per city. Returns 69 Records with _Aachen_ showing 6 orders and _Albuquerque_ showing 18 orders***
+* [x] ***list orders grouped by customer's city showing the number of orders per city. Returns 69 Records with _Aachen_ showing 6 orders and _Albuquerque_ showing 18 orders***
 
   <details><summary>hint</summary>
 
@@ -163,7 +173,11 @@ WHERE UPPER(contact_title) LIKE '%MARKET%'
   </details>
 
 ```SQL
-
+SELECT c.city, COUNT(*)
+FROM orders o JOIN customers c
+ON o.customer_id=c.customer_id
+GROUP BY city
+ORDER BY 1;
 ```
 
 ## Data Normalization
