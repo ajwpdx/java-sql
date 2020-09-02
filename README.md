@@ -184,7 +184,7 @@ ORDER BY 1;
 
 Note: This step does not use PostgreSQL!
 
-* [ ] ***Take the following data and normalize it into a 3NF database***
+* [x] ***Take the following data and normalize it into a 3NF database***
 
 | Person Name | Pet Name | Pet Type | Pet Name 2 | Pet Type 2 | Pet Name 3 | Pet Type 3 | Fenced Yard | City Dweller |
 |-------------|----------|----------|------------|------------|------------|------------|-------------|--------------|
@@ -199,44 +199,45 @@ Below are some empty tables to be used to normalize the database
 
 Table Name: Person Table
 
-| person_id  | person_name | pets #      |
-|------------|-------------|-------------|
-| 1          | Jane        | 3           |
-| 2          | Bob         | 1           |
-| 3          | Sam         | 3           |
+| person_id  | person_name | pets #      | home_id |
+|------------|-------------|-------------|---------|
+| 1          | Jane        | 3           | 1       | 
+| 2          | Bob         | 1           | 3       |
+| 3          | Sam         | 3           | 4       |
 
 Table Name: Pet Table
 
-| pet_id     | pet_name   | pet_type   | person_id |
+| pet_id     | pet_name   | pet_type_id| person_id |
 |------------|------------|------------|-----------|
-| 1          | Ellie      | Dog        | 1         |
-| 2          | Tiger      | Cat        | 1         |
-| 3          | Toby       | Turtle     | 1         |
-| 4          | Joe        | Horse      | 2         |
-| 5          | Ginger     | Dog        | 3         |
-| 6          | Miss Kitty | Cat        | 3         |
-| 7          | Bubble     | Fish       | 3         |
+| 1          | Ellie      | 1          | 1         |
+| 2          | Tiger      | 2          | 1         |
+| 3          | Toby       | 3          | 1         |
+| 4          | Joe        | 4          | 2         |
+| 5          | Ginger     | 1          | 3         |
+| 6          | Miss Kitty | 2          | 3         |
+| 7          | Bubble     | 5          | 3         |
+
+Table Name: Pet Type
+
+| pet_type_id| pet_type   |
+|------------|------------|
+| 1          | Dog        |
+| 2          | Cat        |
+| 3          | Turtle     |
+| 4          | Horse      |
+| 5          | Fish       |
+
+
 
 Table Name: Home Table
 
 | home_id       | location    | fenced_yard |
 |---------------|-------------|-------------|
 | 1             | city        | no          |
-| 2             | non-city    | no          | 
-| 3             | non-city    | yes         | 
+| 2             | city        | yes         | 
+| 3             | non-city    | no          | 
+| 4             | non-city    | yes         | 
 
-
-Table Name: PetPersonHome Table
-
-| pet_id         | person_id  | home_id    |
-|----------------|------------|------------|
-| 1              | 1          | 1          |
-| 2              | 1          | 1          |
-| 3              | 1          | 1          |
-| 4              | 2          | 2          |
-| 5              | 3          | 3          |
-| 6              | 3          | 3          |
-| 7              | 3          | 3          |
 
 ---
 
